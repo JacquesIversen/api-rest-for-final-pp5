@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.TextField(max_length=255, blank=True)
+    name = models.TextField(blank=True)
     age = models.IntegerField(blank=True)
     biography = models.TextField(blank=True)
     owned_cars = models.IntegerField()
