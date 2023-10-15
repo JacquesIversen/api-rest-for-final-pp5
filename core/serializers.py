@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Issue, Comment
+from django.db import IntegrityError
+from .models import Issue, Comment, Like, Dislike
 
 
 class IssueSerializer(serializers.ModelSerializer):
@@ -55,3 +56,37 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class CommentDetailSerializer(CommentSerializer):
     issue = serializers.ReadOnlyField(source='issue.id')
+
+
+""" Here follows Like & Dislike Serializers: """
+
+class LikeSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Like
+        fields = ['id', 'created_at', 'owner', 'comment']
+
+    def create(self, validated_data):
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+                'detail': 'possible duplicate'
+            })
+
+
+class DisLikeSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = DisLike
+        fields = ['id', 'created_at', 'owner', 'comment']
+
+    def create(self, validated_data):
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+                'detail': 'possible duplicate'
+            })

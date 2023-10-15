@@ -35,3 +35,36 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+
+""" Here follows the Like and Dislike Models: """
+
+class Like(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(
+        Comment, related_name='likes', on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        unique_together = ['owner', 'comment']
+
+    def __str__(self):
+        return f'{self.owner} {self.post}'
+
+
+class DisLike(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(
+        Comment, related_name='dislikes', on_delete=models.CASCADE
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        unique_together = ['owner', 'comment']
+
+    def __str__(self):
+        return f'{self.owner} {self.post}'
