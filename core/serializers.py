@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.db import IntegrityError
-from .models import Issue, Comment, Like, Dislike
+from .models import Issue, Comment, Like, DisLike
 
 
 class IssueSerializer(serializers.ModelSerializer):

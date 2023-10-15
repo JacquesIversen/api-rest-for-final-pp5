@@ -1,6 +1,6 @@
 from pp5_api.permissions import IsOwnerOrReadOnly
-from .models import Issue, Comment
-from .serializers import IssueSerializer, CommentSerializer, CommentDetailSerializer
+from .models import Issue, Comment, Like, DisLike
+from .serializers import IssueSerializer, CommentSerializer, CommentDetailSerializer, DisLikeSerializer, LikeSerializer
 from django.http import Http404
 from rest_framework import status, permissions, generics
 from rest_framework.response import Response
@@ -76,3 +76,32 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
+
+
+""" views for Likes & Dislikes: """
+class LikeList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class DisLikeList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = DisLikeSerializer
+    queryset = DisLike.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
+
+class DisLikeDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = DisLikeSerializer
+    queryset = DisLike.objects.all()
