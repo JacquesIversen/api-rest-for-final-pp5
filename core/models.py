@@ -22,3 +22,16 @@ class Issue(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.title}'
+
+
+class Comment(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    comment_area = models.TextField()
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.content
