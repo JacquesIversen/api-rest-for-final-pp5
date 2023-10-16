@@ -8,6 +8,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     issues_posted = serializers.ReadOnlyField()
     issues_solved = serializers.ReadOnlyField()
     is_owner = serializers.SerializerMethodField()
+    issues_listed = serializers.ReadOnlyField()
+
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -16,5 +18,5 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'id', 'owner', 'name', 'age', 'biography', 'owned_cars', 'issues_posted', 'issues_solved', 'image', 'is_owner'
+            'id', 'owner', 'age', 'name', 'biography', 'owned_cars', 'issues_posted', 'issues_solved', 'image', 'is_owner', 'issues_listed'
         ]

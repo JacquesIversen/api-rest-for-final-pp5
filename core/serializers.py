@@ -8,6 +8,7 @@ class IssueSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    comments_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -32,7 +33,7 @@ class IssueSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at',
             'title', 'car', 'model', 'year', 'engine_size',
-            'description', 'is_solved', 'image',
+            'description', 'is_solved', 'image', 'comments_count',
         ]
 
 
