@@ -3,6 +3,7 @@ from pp5_api.permissions import IsOwnerOrReadOnly
 from .models import Issue, Comment, Like, DisLike
 from .serializers import IssueSerializer, CommentSerializer, CommentDetailSerializer, DisLikeSerializer, LikeSerializer
 from rest_framework import permissions, generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 
@@ -50,6 +51,8 @@ class CommentList(generics.ListCreateAPIView):
         like_count=Count('likes', distinct=True),
         dislike_count=Count('dislikes', distinct=True),
     )
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['issue']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
