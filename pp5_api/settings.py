@@ -66,7 +66,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 """ DEBUG = 'DEV' in os.environ """
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-t7kxfxwr0io.ws-eu105.gitpod.io', 'https://pp5-api-final-b2f167f1cdb6.herokuapp.com']
+ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-t7kxfxwr0io.ws-eu105.gitpod.io', 'https://pp5-api-final-b2f167f1cdb6.herokuapp.com', 'pp5-api-final-b2f167f1cdb6.herokuapp.com']
 
 
 # Application definition
