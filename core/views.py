@@ -27,7 +27,11 @@ class IssueView(generics.ListCreateAPIView):
         'engine_size',
         'description',
     ]
-    ordering_fields = ['is_solved']
+    ordering_fields = ['car',
+        'model',
+        'year',
+        'engine_size',
+        'comments',]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
