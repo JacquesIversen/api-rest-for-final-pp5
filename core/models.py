@@ -41,7 +41,7 @@ class Issue(models.Model):
     engine_size = models.DecimalField(max_digits=3, decimal_places=1)
     description = models.TextField(blank=True)
     is_solved = models.BooleanField(default=True)
-    image = image = models.ImageField(
+    image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
 
