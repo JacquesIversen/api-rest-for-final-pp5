@@ -63,7 +63,8 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+""" DEBUG = 'DEV' in os.environ """
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-t7kxfxwr0io.ws-eu105.gitpod.io', 'https://pp5-api-final-b2f167f1cdb6.herokuapp.com']
 
