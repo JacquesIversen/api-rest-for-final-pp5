@@ -37,7 +37,7 @@ class Issue(models.Model):
     title = models.CharField(max_length=255)
     car = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
-    year = models.IntegerField()
+    year = models.IntegerField(null=True, blank=True)
     engine_size = models.DecimalField(max_digits=3, decimal_places=1)
     description = models.TextField(blank=True)
     is_solved = models.BooleanField(default=True)
@@ -63,7 +63,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment_area
-
 
 
 """ Here follows the Like and Dislike Models: """
