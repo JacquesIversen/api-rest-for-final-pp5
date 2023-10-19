@@ -18,16 +18,17 @@ import re
 if os.path.exists('env.py'):
     import env
 
+
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
+
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
@@ -38,12 +39,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
-
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
-
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -67,8 +66,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-t7kxfxwr0io.ws-eu105.gitpod.io', os.environ.get('ALLOWED_HOST')]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 
-# Application definition
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
+    ).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,6 +102,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
+
     'profiles',
     'core',
 ]
@@ -109,23 +123,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-
-
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = False
 
 ROOT_URLCONF = 'pp5_api.urls'
 
