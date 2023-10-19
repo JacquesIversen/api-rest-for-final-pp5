@@ -6,7 +6,7 @@ from .settings import JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESIT
 @api_view()
 def root_route(request):
     return Response({
-        "message": "This is The APi of PP5"
+        "message": "This is The APi of PP55"
     })
 
 
