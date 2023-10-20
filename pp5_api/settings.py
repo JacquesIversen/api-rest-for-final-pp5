@@ -44,7 +44,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
-REST_USE_JWT = True
+""" REST_USE_JWT = True """
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
@@ -64,7 +64,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 """ DEBUG = 'DEV' in os.environ """
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-t7kxfxwr0io.ws-eu105.gitpod.io', os.environ.get('ALLOWED_HOST')]
+ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-21d1c47g3mv.ws-eu105.gitpod.io', os.environ.get('ALLOWED_HOST')]
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
@@ -148,7 +148,7 @@ WSGI_APPLICATION = 'pp5_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEV' in os.environ:
+""" if 'DEV' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -159,7 +159,11 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-
+ """
+ 
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
