@@ -42,7 +42,7 @@ class Issue(models.Model):
     description = models.TextField(blank=True)
     is_solved = models.BooleanField(default=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_post_rgq6aq', blank=True
+        upload_to='images/', default='../default_post_rgq6aq', blank=True, null=True
     )
 
     class Meta:
