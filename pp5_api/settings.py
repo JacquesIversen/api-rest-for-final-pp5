@@ -30,7 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -59,8 +61,8 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-""" DEBUG = 'DEV' in os.environ """
-DEBUG = True
+DEBUG = 'DEV' in os.environ
+""" DEBUG = True """
 
 ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-21d1c47g3mv.ws-eu105.gitpod.io', os.environ.get('ALLOWED_HOST')]
 
