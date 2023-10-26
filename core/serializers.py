@@ -23,10 +23,10 @@ class IssueSerializer(serializers.ModelSerializer):
                 'Image width larger than 4096px!'
             )
         return value
-
+    
     def get_is_owner(self, obj):
-        # request = self.context['request']
-        return None
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = Issue
@@ -46,7 +46,8 @@ class CommentSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
-        return  None
+        request = self.context['request']
+        return request.user == obj.owner
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)

@@ -6,16 +6,16 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    name = models.CharField(max_length=255, blank=True)
-    content = models.TextField(blank=True)
-    image = models.ImageField(
-        upload_to='images/', default='../default_profile_qdjgyp'
-    )
+    name = models.TextField(blank=True, null=True)
+    age = models.PositiveIntegerField(null=True, blank=True)
+    biography = models.TextField(blank=True, null=True)
+    owned_cars = models.IntegerField(null=True, blank=True)
+    issues_posted = models.IntegerField(null=True, blank=True)
+    issues_solved = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', default='../default_profile_ponhew')
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-issues_solved']
 
     def __str__(self):
         return f"{self.owner}'s profile"
