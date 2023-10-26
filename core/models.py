@@ -34,11 +34,11 @@ post_save.connect(create_profile, sender=User)
 class Issue(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=255)
-    car = models.CharField(max_length=255)
-    model = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True, blank=True)
+    car = models.CharField(max_length=255, null=True, blank=True)
+    model = models.CharField(max_length=255, null=True, blank=True)
     year = models.IntegerField(null=True, blank=True)
-    engine_size = models.DecimalField(max_digits=3, decimal_places=1)
+    engine_size = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(blank=True)
     is_solved = models.BooleanField(default=True)
     image = models.ImageField(
@@ -79,7 +79,7 @@ class Like(models.Model):
         unique_together = ['owner', 'comment']
 
     def __str__(self):
-        return f'{self.owner} {self.post}'
+        return f'{self.owner} {self.comment}'
 
 
 class DisLike(models.Model):
@@ -94,4 +94,4 @@ class DisLike(models.Model):
         unique_together = ['owner', 'comment']
 
     def __str__(self):
-        return f'{self.owner} {self.post}'
+        return f'{self.owner} {self.comment}'
