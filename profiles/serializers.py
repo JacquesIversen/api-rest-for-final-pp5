@@ -1,5 +1,5 @@
 from rest_framework import serializers, generics
-from core.models import Profile
+from core.models import Profile, Issue, Comment
 from core.serializers import IssueSerializer, CommentSerializer
 
 

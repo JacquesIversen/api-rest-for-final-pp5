@@ -23,8 +23,9 @@ class IssueSerializer(serializers.ModelSerializer):
                 'Image width larger than 4096px!'
             )
         return value
-    
+
     def get_is_owner(self, obj):
+        # request = self.context['request']
         return None
 
     class Meta:
@@ -43,7 +44,7 @@ class CommentSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     created_at = serializers.SerializerMethodField()
-    
+
     def get_is_owner(self, obj):
         return  None
 

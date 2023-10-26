@@ -13,7 +13,6 @@ class Profile(models.Model):
     owned_cars = models.IntegerField(null=True, blank=True)
     issues_posted = models.IntegerField(null=True, blank=True)
     issues_solved = models.IntegerField(null=True, blank=True)
-    """ favorite_brand = models.ManyToManyField() """
     image = models.ImageField(upload_to='images/', default='../default_profile_ponhew')
 
     class Meta:
