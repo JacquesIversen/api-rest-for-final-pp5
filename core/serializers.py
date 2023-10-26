@@ -25,8 +25,7 @@ class IssueSerializer(serializers.ModelSerializer):
         return value
     
     def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+        return None
 
     class Meta:
         model = Issue
@@ -44,10 +43,9 @@ class CommentSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     created_at = serializers.SerializerMethodField()
-
+    
     def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+        return  None
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
