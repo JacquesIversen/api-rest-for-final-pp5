@@ -53,7 +53,7 @@ class CommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        dislike_count=Count('dislikes', distinct=True),
+        dislikes_count=Count('dislikes', distinct=True),
     )
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['issue']

@@ -46,7 +46,9 @@ class CommentSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
-    comments_count = serializers.ReadOnlyField()
+    dislike_id = serializers.SerializerMethodField()
+    dislikes_count = serializers.ReadOnlyField()
+
 
 
     def get_is_owner(self, obj):
@@ -68,11 +70,21 @@ class CommentSerializer(serializers.ModelSerializer):
         return None
 
 
+    def get_dislike_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            dislike = DisLike.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return dislike.id if dislike else None
+        return None
+
+
     class Meta:
         model = Comment
         fields = [
             'issue', 'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'comment_area', 'created_at', 'like_id', "likes_count", 'comments_count',
+            'comment_area', 'created_at', 'like_id', "likes_count", 'dislike_id', 'dislikes_count',
         ]
 
 
