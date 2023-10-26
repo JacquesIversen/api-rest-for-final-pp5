@@ -4,28 +4,17 @@ from core.serializers import IssueSerializer, CommentSerializer
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
+    issues_count = serializers.ReadOnlyField()
 
-    issues = serializers.SerializerMethodField()
-    comments = serializers.SerializerMethodField()
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = Profile
         fields = [
-            'id', 'age', 'name', 'biography',
-            'issues', 'image', 'comments'
+            'id', 'owner', 'created_at', 'updated_at', 'name',
+            'content', 'image', 'is_owner', 'issue_count',
         ]
-#'issues_posted', 'issues_solved', 'issues_listed'
-
-    def get_issues(self, obj):
-
-        issues = Issue.objects.filter(
-            owner=obj.owner
-        )
-        return IssueSerializer(issues, many=True).data
-
-    def get_comments(self, obj):
-
-        comments = Comment.objects.filter(
-            owner=obj.owner
-        )
-        return CommentSerializer(comments, many=True).data
