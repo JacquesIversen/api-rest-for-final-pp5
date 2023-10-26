@@ -67,7 +67,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        dislike_count=Count('dislikes', distinct=True),
+        dislikes_count=Count('dislikes', distinct=True),
     )
 
 
