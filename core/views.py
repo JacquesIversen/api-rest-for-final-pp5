@@ -52,7 +52,7 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.annotate(
-        like_count=Count('likes', distinct=True),
+        likes_count=Count('likes', distinct=True),
         dislike_count=Count('dislikes', distinct=True),
     )
     filter_backends = [DjangoFilterBackend]
@@ -66,7 +66,7 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.annotate(
-        like_count=Count('likes', distinct=True),
+        likes_count=Count('likes', distinct=True),
         dislike_count=Count('dislikes', distinct=True),
     )
 
