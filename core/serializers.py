@@ -64,7 +64,7 @@ class CommentSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
-                owner=user, post=obj
+                owner=user, comment=obj
             ).first()
             return like.id if like else None
         return None
@@ -74,7 +74,7 @@ class CommentSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             dislike = DisLike.objects.filter(
-                owner=user, post=obj
+                owner=user, comment=obj
             ).first()
             return dislike.id if dislike else None
         return None

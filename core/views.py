@@ -98,3 +98,5 @@ class DisLikeDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DisLikeSerializer
     queryset = DisLike.objects.all()
+
+
