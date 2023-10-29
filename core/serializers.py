@@ -23,10 +23,10 @@ class IssueSerializer(serializers.ModelSerializer):
                 'Image width larger than 4096px!'
             )
         return value
-    
+
     def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+        # request = self.context['request']
+        return None
 
     class Meta:
         model = Issue
@@ -48,12 +48,12 @@ class CommentSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     dislike_id = serializers.SerializerMethodField()
     dislikes_count = serializers.ReadOnlyField()
-
+    likes = serializers.SerializerMethodField()
+    dislikes = serializers.SerializerMethodField()
 
 
     def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+        return  None
 
 
     def get_created_at(self, obj):
@@ -79,12 +79,23 @@ class CommentSerializer(serializers.ModelSerializer):
             return dislike.id if dislike else None
         return None
 
+    # get the user's profiles who liked the comment
+    def get_likes(self, obj):
+        likes = obj.likes.all()
+        return LikeSerializer(likes, many=True).data
+
+    def get_dislikes(self, obj):
+        dislikes = obj.dislikes.all()
+        return DisLikeSerializer(dislikes, many=True).data
+
+
 
     class Meta:
         model = Comment
         fields = [
             'issue', 'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'comment_area', 'created_at', 'like_id', "likes_count", 'dislike_id', 'dislikes_count',
+            'likes', 'dislikes'
         ]
 
 
@@ -101,13 +112,48 @@ class LikeSerializer(serializers.ModelSerializer):
         model = Like
         fields = ['id', 'created_at', 'owner', 'comment']
 
+    # create method creates a new like object
+    # if the object already exists, it will remove the object
+    # this is to prevent the user from liking the same comment twice
     def create(self, validated_data):
+        # check if the user has already liked the comment
+        # if so, remove the like
         try:
+            like = Like.objects.get(
+                owner=validated_data['owner'],
+                comment=validated_data['comment']
+            )
+            like.delete()
+            # return a like object with id=None
+            # this will be used to update the like button on the frontend
+            return Like(id=None)
+        except Like.DoesNotExist:
+            # check if the comment owner is the same as the owner of the like
+            # if so, raise a validation error
+            if validated_data['owner'] == validated_data['comment'].owner:
+                raise serializers.ValidationError({
+                    'detail': 'You cannot like your own comment.'
+                })
+            # check if there is a dislike with the same owner and comment
+            # if so, remove the dislike
+            try:
+                dislike = DisLike.objects.get(
+                    owner=validated_data['owner'],
+                    comment=validated_data['comment']
+                )
+                dislike.delete()
+            except DisLike.DoesNotExist:
+                pass
+
             return super().create(validated_data)
-        except IntegrityError:
-            raise serializers.ValidationError({
-                'detail': 'possible duplicate'
-            })
+
+    # def create(self, validated_data):
+    #     try:
+    #         return super().create(validated_data)
+    #     except IntegrityError:
+    #         raise serializers.ValidationError({
+    #             'detail': 'possible duplicate'
+    #         })
 
 
 class DisLikeSerializer(serializers.ModelSerializer):
@@ -118,9 +164,33 @@ class DisLikeSerializer(serializers.ModelSerializer):
         fields = ['id', 'created_at', 'owner', 'comment']
 
     def create(self, validated_data):
+        # check if the user has already disliked the comment
+        # if so, remove the dislike
         try:
+            dislike = DisLike.objects.get(
+                owner=validated_data['owner'],
+                comment=validated_data['comment']
+            )
+            dislike.delete()
+            # return a dislike object with id=None
+            # this will be used to update the dislike button on the frontend
+            return DisLike(id=None)
+        except DisLike.DoesNotExist:
+            # check if the comment owner is the same as the owner of the dislike
+            # if so, raise a validation error
+            if validated_data['owner'] == validated_data['comment'].owner:
+                raise serializers.ValidationError({
+                    'detail': 'You cannot dislike your own comment.'
+                })
+            # check if there is a like with the same owner and comment
+            # if so, remove the like
+            try:
+                like = Like.objects.get(
+                    owner=validated_data['owner'],
+                    comment=validated_data['comment']
+                )
+                like.delete()
+            except Like.DoesNotExist:
+                pass
+
             return super().create(validated_data)
-        except IntegrityError:
-            raise serializers.ValidationError({
-                'detail': 'possible duplicate'
-            })

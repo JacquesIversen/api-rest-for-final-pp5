@@ -54,7 +54,7 @@ class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.annotate(
         likes_count=Count('likes', distinct=True),
         dislikes_count=Count('dislikes', distinct=True),
-    )
+    ).order_by('-created_at')
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['issue']
 
