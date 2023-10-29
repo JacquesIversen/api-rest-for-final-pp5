@@ -61,23 +61,11 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
     def get_like_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            like = Like.objects.filter(
-                owner=user, comment=obj
-            ).first()
-            return like.id if like else None
-        return None
+        return 1
 
 
     def get_dislike_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            dislike = DisLike.objects.filter(
-                owner=user, comment=obj
-            ).first()
-            return dislike.id if dislike else None
-        return None
+        return 1
 
     # get the user's profiles who liked the comment
     def get_likes(self, obj):
