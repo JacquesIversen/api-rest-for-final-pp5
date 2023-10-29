@@ -57,7 +57,7 @@ class Comment(models.Model):
     comment_area = models.TextField()
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['created_at']
 
     def __str__(self):
         return self.comment_area
