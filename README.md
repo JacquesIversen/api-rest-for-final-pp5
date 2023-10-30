@@ -61,7 +61,11 @@ This backend application seek to fill a ordering and scaleable model based API t
 - Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
 - As a user I can
 
-### [Technologies](#technologies)
+## [Entity Relationship Diagram](#entity-relationship-diagram)
+
+# ![**ERD**](Media/ReadMeFiles/entity.png)
+
+## [Technologies](#technologies)
 
 ### Django Rest Framework?
 
@@ -157,9 +161,6 @@ This backend application seek to fill a ordering and scaleable model based API t
 - Testing with Get, Put, Post and Delete through postman
 - Testing with Get, Put, Post and Delete through frontend application (DEV)
 - Testing with Get, Put, Post and Delete through frontend application (Production)
-
-
-
 
 ### [Deployment](#deployment)
 
