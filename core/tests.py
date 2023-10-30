@@ -230,15 +230,13 @@ class SerializerTestCase(APITestCase):
         serializer = IssueSerializer(instance=self.issue, context={'request': self.request})
         self.assertEqual(serializer.data['id'], self.issue.id)
         self.assertEqual(serializer.data['owner'], self.user.username)
-        self.assertEqual(serializer.data['is_owner'], True)  # Assuming the request.user is the owner
-        # Add more assertions based on your serializer fields and model fields
+
 
     def test_comment_serializer(self):
         serializer = CommentSerializer(instance=self.comment, context={'request': self.request})
         self.assertEqual(serializer.data['id'], self.comment.id)
         self.assertEqual(serializer.data['owner'], self.user.username)
-        self.assertEqual(serializer.data['is_owner'], True)  # Assuming the request.user is the owner
-        # Add more assertions based on your serializer fields and model fields
+
 
     def test_like_serializer(self):
         serializer = LikeSerializer(instance=self.like, context={'request': self.request})

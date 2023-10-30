@@ -12,7 +12,8 @@ class Profile(models.Model):
     owned_cars = models.IntegerField(null=True, blank=True)
     issues_posted = models.IntegerField(null=True, blank=True)
     issues_solved = models.IntegerField(null=True, blank=True)
-    image = models.ImageField(upload_to='images/', default='../default_profile_ponhew')
+    image = models.ImageField(
+        upload_to='images/', default='../default_profile_ponhew')
 
     class Meta:
         ordering = ['-issues_solved']
@@ -28,7 +29,10 @@ def create_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
+
 """ This sections holds the models for the Issues posted by the user:  """
+
+
 class Issue(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -40,7 +44,8 @@ class Issue(models.Model):
     description = models.TextField(blank=True)
     is_solved = models.BooleanField(default=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_post_rgq6aq', blank=True, null=True
+        upload_to='images/',
+        default='../default_post_rgq6aq', blank=True, null=True
     )
 
     class Meta:
@@ -64,6 +69,7 @@ class Comment(models.Model):
 
 
 """ Here follows the Like and Dislike Models: """
+
 
 class Like(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -93,6 +99,7 @@ class DisLike(models.Model):
 
     def __str__(self):
         return f'{self.owner} {self.comment}'
+
 
 
 

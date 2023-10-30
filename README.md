@@ -29,6 +29,39 @@ This backend application seek to fill a ordering and scaleable model based API t
 - [Deployment](#deployment)
 - [Credits](#credits)
 
+### [User Stories](#user-stories)
+
+**Navigation and authentication**
+
+   - Navigation: As a user, I can view a navbar from every page so that I can navigate easily between pages.
+   - Routing: As a user, I can navigate through pages quickly so that I can view content seamlessly without page refresh.
+   - Authentication - Sign up: As a user, I can create a new account so that I can access all the features for signed-up users.
+   - Authentication - Sign in: As a user, I can sign in to the app so that I can access functionality for logged-in users.
+   - Navigation: Conditional rendering - As a logged-out user, I can see sign-in and sign-up options so that I can sign in/sign up.
+   - Authentication - Logged in Status: As a user, I can tell if I am logged in or not so that I can log in if I need to.
+   - Authentication - Refreshing access tokens: As a user, I can maintain my logged-in status until I choose to log out so that my user experience is not compromised.
+
+**Profile**
+
+   - Profile page: As a user, I can view other users' profiles so that I can see their posts and learn more about them.
+   - Profile page: As a user, I can view and edit information about myself for other to see.
+   - Profile page: As a user, I can see and follow my current activity on the site
+   - Profile page: As a user, I can see and follow others current activity on their site
+
+**Commenting and liking**
+
+   - Create Issue: As a logged-in user, I can create issue with a single image.
+   - View an issue: As a user, I can view the details of a single issue
+   - Issuepage: As a user, I can view the Issue page so that I can read the comments/soulutions about the issue.
+   - Edit Issue: As an owner, I can edit all objects so that I can make corrections or update my issue after it was created.
+   - Create a comment: As a logged-in user, I can add comments to an issue so that I can share my thoughts about the issue.
+   - Comment date: As a user, I can see how long ago a comment was made so that I know how old a comment is.
+   - View comments: As a user, I can read comments on Issues so that I can read what other users might offer to solve it.
+   - Delete comments: As an owner of a comment, I can delete my comment so that I can control the removal of my comment from the application.
+   - Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
+   - As a user I can 
+
+
 ### [Technologies](#technologies)
 
 ### Django Rest Framework?
@@ -123,26 +156,14 @@ Thank you for choosing Django Rest Framework for your car blogging community! If
 
 ### [Testing](#testing)
 
-Comprehensive manual testing was carried out to guarantee that Users without the necessary permissions would not have Write Access.
-It was a fundamental priority to restrict Users from having the ability to create, update, or delete data; or perform actions that could jeopardize sensitive data; or modify the system's state through adding new records, editing existing content, or making changes to configuration settings.
-
-Create, Read, Update and Delete (CRUD) functionality across this API was tested manually. This ensured that the database and handling of data worked as expected when Users manipulated data on the frontend React app.
-All apps passed the tests conducted for verifying the intended backend functionality. For more details on each test visit the **testing.md** file found **[here](/testing.md)**.
-
-Backend manual testing used throughout each stage of development helped guarantee that the acceptance criteria set out in each of the User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)** in Github Projects.
-
-For further details of testing carried out on the React frontend relevant to verifying the backend functionality, please visit the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** and **[frontend repository testing.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/testing.md)**.
-
 **Python Validation**
 
-Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings, an example of this can be seen below:
+- Code Institute's CI Python Linter was used to validate all Python code. Only errors to occur was Line Too Long, Expected x lines found x and newline at end of file. All errors were dealt with
+- Creating testcases in tests.py only in core. 
 
-![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
+
 
 **Fixed Bugs**
-
-Migrated changes to models.py files caused the most problems overall. Although the data did exist in the [database](https://www.elephantsql.com/), the database was corrupted and had to be delete entirely.
-A new instance needed to be created and connected to the API. The env.py file and Heroku Config Vars were updated accordingly. The important learning from idenitifying the cause and then the solution to this problem was understanding that the issue was caused by a migration that altered a model -from having an owner = ForeignKey when a OneToOneField was required instead.
 
 ### [Deployment](#deployment)
 
@@ -201,3 +222,9 @@ once all the variables are in place, choose the main branch and click 'Deploy Br
 Once the build is finished, click 'Open App' located at the top of the page.
 
 ### [Credits](#credits)
+
+This project came to life only with the help of numerous youtube tutorials and many, many shellcases resulted in a crash. Though were no special account, creator or video used for the basis of this project, but used for a broader understanding.
+
+CI-drf-api walkthrough project.
+
+A special thanks to my girlfriend for helping with the agile aspect of this:

@@ -69,7 +69,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 """ DEBUG = True """
 
-ALLOWED_HOSTS = ['8000-jacquesiver-apirestforf-21d1c47g3mv.ws-eu105.gitpod.io', os.environ.get('ALLOWED_HOST')]
+ALLOWED_HOSTS = [
+    '8000-jacquesiver-apirestforf-21d1c47g3mv.ws-eu105.gitpod.io',
+    os.environ.get('ALLOWED_HOST')]
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
@@ -85,7 +87,6 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-
 
 
 INSTALLED_APPS = [
@@ -107,7 +108,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'corsheaders',
-
     'profiles',
     'core',
 ]
@@ -115,7 +115,8 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 """ REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS':
+    ['django_filters.rest_framework.DjangoFilterBackend']
 } """
 
 MIDDLEWARE = [
@@ -153,19 +154,18 @@ WSGI_APPLICATION = 'pp5_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# Use for deployment: 
+# Use for deployment:
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-# Use for testcases:
-""" DATABASES = {
+""" # Use for testcases:
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
- """
+} """
 
 
 # Password validation
@@ -173,16 +173,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
