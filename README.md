@@ -1,7 +1,5 @@
 # Car Solution Army - Backend
 
-# ![**CSA**](Media/ReadMeFiles/IssuePageRM.png)
-
 [**CSA**](https://pp5-api-final-b2f167f1cdb6.herokuapp.com/) uses [Django Rest Framework](https://www.django-rest-framework.org) to serve as its API to interface with its frontend [React](https://www.npmjs.com) JavaScript library.
 
 Car Solution Army (CSA) is a vibrant online community and blogging platform dedicated to troubleshooting car-related problems and issues. CSA serves as a gathering place for automotive enthusiasts, professionals, and everyday car owners seeking solutions to various vehicle challenges.
@@ -12,9 +10,14 @@ Whether it's a mysterious engine noise, a faulty electrical component, or advice
 
 CSA's blogging platform features detailed articles, how-to guides, and case studies contributed by experts and experienced community members. These resources serve as valuable references for individuals looking to understand, troubleshoot, and resolve specific car issues. By harnessing the collective knowledge of its members, CSA aims to make car ownership a more enjoyable and stress-free experience, ensuring that members can hit the road with confidence.
 
-- **[Click Here](https://pp5-react-3a1a7789b87e.herokuapp.com/)** to see the deployed website.
+# ![**CSA**](Media/ReadMeFiles/amIresponsive.png)
+
+- **[Click Here](https://pp5-react-3a1a7789b87e.herokuapp.com/)** to see the deployed frontend application
+- **[Click Here](https://pp5-api-final-b2f167f1cdb6.herokuapp.com/)** to see the deployed backend API
 
 - To view the frontend repository on Github **[Click Here](https://github.com/JacquesIversen/pp5-react)**.
+
+- To view the back repository on Github **[Click Here](https://github.com/JacquesIversen/pp5-react)**.
 
 ## **Summary**
 
@@ -105,7 +108,6 @@ This backend application seek to fill a ordering and scaleable model based API t
 
 1. **Installation:**
 
-   - Clone this repository.
    - Set up your virtual environment and install dependencies using `pip install -r requirements.txt`.
 
 2. **Configuration:**
@@ -156,21 +158,21 @@ This backend application seek to fill a ordering and scaleable model based API t
 
 **Python Validation**
 
-- Code Institute's CI Python Linter was used to validate all Python code. Only errors to occur was Line Too Long, Expected x lines found x and newline at end of file. All errors were dealt with
+- Code Institute's CI Python Linter was used to validate all Python code.
+- Only 9 total fileerrors to occur was Line Too Long, Expected x lines found x and newline at end of file. All errors were dealt with
 
 ## ![**Linter**](Media/ReadMeFiles/CI-linter.png)
 
-- Creating testcases in tests.py in Core for 27 test == Pass
+### Creating testcases in tests.py in Core for 27 test == Pass
+
 - Note change of database in settings.py when doing so.
 
 ## ![**Testcases**](Media/ReadMeFiles/testcases.png)
 
-- Testing with Get, Put, Post and Delete through postman, when testing endpoints.
+- Testing with Get, Put, Post and Delete through postman, when testing endpoints. (**[Testfile](testing.md)**)
 
-### Follow testing.md file in frontend repository.
-
-- Testing with Get, Put, Post and Delete through frontend application (DEV) == Pass
-- Testing with Get, Put, Post and Delete through frontend application (Production) == Pass
+- Testing with Get, Put, Post and Delete through frontend application (DEV) == Pass (Testfile in frontend Repository)
+- Testing with Get, Put, Post and Delete through frontend application (Production) == Pass (Testfile in frontend Repository)
 
 ### [Deployment](#deployment)
 
@@ -231,6 +233,12 @@ Once the build is finished, click 'Open App' located at the top of the page.
 ### [Credits](#credits)
 
 This project came to life only with the help of numerous youtube tutorials and many, many shellcases resulted in a crash. Though were no special account, creator or video used for the basis of this project, but used for a broader understanding.
+
+To name a few, but commonly used in this project
+
+- CodingEntreprenuers
+- Dennis Ivy (django + React Notes app)
+- TechWithTim (Full stack web App Tutorial)
 
 CI-drf-api walkthrough project.
 
