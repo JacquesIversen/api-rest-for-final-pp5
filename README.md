@@ -33,34 +33,33 @@ This backend application seek to fill a ordering and scaleable model based API t
 
 **Navigation and authentication**
 
-   - Navigation: As a user, I can view a navbar from every page so that I can navigate easily between pages.
-   - Routing: As a user, I can navigate through pages quickly so that I can view content seamlessly without page refresh.
-   - Authentication - Sign up: As a user, I can create a new account so that I can access all the features for signed-up users.
-   - Authentication - Sign in: As a user, I can sign in to the app so that I can access functionality for logged-in users.
-   - Navigation: Conditional rendering - As a logged-out user, I can see sign-in and sign-up options so that I can sign in/sign up.
-   - Authentication - Logged in Status: As a user, I can tell if I am logged in or not so that I can log in if I need to.
-   - Authentication - Refreshing access tokens: As a user, I can maintain my logged-in status until I choose to log out so that my user experience is not compromised.
+- Navigation: As a user, I can view a navbar from every page so that I can navigate easily between pages.
+- Routing: As a user, I can navigate through pages quickly so that I can view content seamlessly without page refresh.
+- Authentication - Sign up: As a user, I can create a new account so that I can access all the features for signed-up users.
+- Authentication - Sign in: As a user, I can sign in to the app so that I can access functionality for logged-in users.
+- Navigation: Conditional rendering - As a logged-out user, I can see sign-in and sign-up options so that I can sign in/sign up.
+- Authentication - Logged in Status: As a user, I can tell if I am logged in or not so that I can log in if I need to.
+- Authentication - Refreshing access tokens: As a user, I can maintain my logged-in status until I choose to log out so that my user experience is not compromised.
 
 **Profile**
 
-   - Profile page: As a user, I can view other users' profiles so that I can see their posts and learn more about them.
-   - Profile page: As a user, I can view and edit information about myself for other to see.
-   - Profile page: As a user, I can see and follow my current activity on the site
-   - Profile page: As a user, I can see and follow others current activity on their site
+- Profile page: As a user, I can view other users' profiles so that I can see their posts and learn more about them.
+- Profile page: As a user, I can view and edit information about myself for other to see.
+- Profile page: As a user, I can see and follow my current activity on the site
+- Profile page: As a user, I can see and follow others current activity on their site
 
 **Commenting and liking**
 
-   - Create Issue: As a logged-in user, I can create issue with a single image.
-   - View an issue: As a user, I can view the details of a single issue
-   - Issuepage: As a user, I can view the Issue page so that I can read the comments/soulutions about the issue.
-   - Edit Issue: As an owner, I can edit all objects so that I can make corrections or update my issue after it was created.
-   - Create a comment: As a logged-in user, I can add comments to an issue so that I can share my thoughts about the issue.
-   - Comment date: As a user, I can see how long ago a comment was made so that I know how old a comment is.
-   - View comments: As a user, I can read comments on Issues so that I can read what other users might offer to solve it.
-   - Delete comments: As an owner of a comment, I can delete my comment so that I can control the removal of my comment from the application.
-   - Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
-   - As a user I can 
-
+- Create Issue: As a logged-in user, I can create issue with a single image.
+- View an issue: As a user, I can view the details of a single issue
+- Issuepage: As a user, I can view the Issue page so that I can read the comments/soulutions about the issue.
+- Edit Issue: As an owner, I can edit all objects so that I can make corrections or update my issue after it was created.
+- Create a comment: As a logged-in user, I can add comments to an issue so that I can share my thoughts about the issue.
+- Comment date: As a user, I can see how long ago a comment was made so that I know how old a comment is.
+- View comments: As a user, I can read comments on Issues so that I can read what other users might offer to solve it.
+- Delete comments: As an owner of a comment, I can delete my comment so that I can control the removal of my comment from the application.
+- Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
+- As a user I can
 
 ### [Technologies](#technologies)
 
@@ -129,11 +128,6 @@ This backend application seek to fill a ordering and scaleable model based API t
    - Write unit tests for your API endpoints.
    - Deploy your backend on your preferred hosting platform, ensuring security and scalability.
 
-7. **Contribute:**
-   - Join our open-source community! Contribute to the project by fixing bugs, adding new features, or improving documentation.
-
-Thank you for choosing Django Rest Framework for your car blogging community! If you have questions or need assistance, don't hesitate to reach out to our community forums. Happy coding! 🚗💻
-
 - #### Languages
 
   - [Python](<https://en.wikipedia.org/wiki/Python_(programming_language)>)
@@ -159,11 +153,13 @@ Thank you for choosing Django Rest Framework for your car blogging community! If
 **Python Validation**
 
 - Code Institute's CI Python Linter was used to validate all Python code. Only errors to occur was Line Too Long, Expected x lines found x and newline at end of file. All errors were dealt with
-- Creating testcases in tests.py only in core. 
+- Creating testcases in tests.py in Core, Profiles and pp5-api
+- Testing with Get, Put, Post and Delete through postman
+- Testing with Get, Put, Post and Delete through frontend application (DEV)
+- Testing with Get, Put, Post and Delete through frontend application (Production)
 
 
 
-**Fixed Bugs**
 
 ### [Deployment](#deployment)
 
