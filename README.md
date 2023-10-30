@@ -157,10 +157,20 @@ This backend application seek to fill a ordering and scaleable model based API t
 **Python Validation**
 
 - Code Institute's CI Python Linter was used to validate all Python code. Only errors to occur was Line Too Long, Expected x lines found x and newline at end of file. All errors were dealt with
-- Creating testcases in tests.py in Core, Profiles and pp5-api
-- Testing with Get, Put, Post and Delete through postman
-- Testing with Get, Put, Post and Delete through frontend application (DEV)
-- Testing with Get, Put, Post and Delete through frontend application (Production)
+
+## ![**Linter**](Media/ReadMeFiles/CI-linter.png)
+
+- Creating testcases in tests.py in Core for 27 test == Pass
+- Note change of database in settings.py when doing so.
+
+## ![**Linter**](Media/ReadMeFiles/testcases.png)
+
+- Testing with Get, Put, Post and Delete through postman, when testing endpoints.
+
+### Follow testing.md file in frontend repository.
+
+- Testing with Get, Put, Post and Delete through frontend application (DEV) == Pass
+- Testing with Get, Put, Post and Delete through frontend application (Production) == Pass
 
 ### [Deployment](#deployment)
 
