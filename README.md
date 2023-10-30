@@ -163,7 +163,7 @@ This backend application seek to fill a ordering and scaleable model based API t
 - Creating testcases in tests.py in Core for 27 test == Pass
 - Note change of database in settings.py when doing so.
 
-## ![**Linter**](Media/ReadMeFiles/testcases.png)
+## ![**Testcases**](Media/ReadMeFiles/testcases.png)
 
 - Testing with Get, Put, Post and Delete through postman, when testing endpoints.
 
